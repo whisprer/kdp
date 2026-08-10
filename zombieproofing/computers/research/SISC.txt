@@ -1,0 +1,12 @@
+SISC (Special Instruction Set Computing): a proposed new ias
+
+proposing a new is a custom designed specifically for the purpose of getting maximum efficiency of performance from common commercial home pc's/gfx card when running llm and similar type 'ai's :
+
+- this would benefit from some form of true parallel architecture type al la EPIC
+- also employ some aspects of VLIW/LIW to adapt to the particular necessity for coping with particular repetitive use of certain long er but oft repeated calculations
+- it would still benefit therefore from the longer instructions of cisc and other advantages yet he parallel nature e allowing the running of adaptations also to risc type architecture aspects wen needed or best suited for other calculations.
+- finally, all this could be achieved without altering hardware by adapting the controller specifically as far as instruction issue and scheduling were handled. 
+
+it may be worth looking into misc and iosc architecture benefits to see if any adaptations can be drawn from those architectures also.
+
+ive been referring to this custom isa as Special Instruction Set Computer or SISC in my head. 

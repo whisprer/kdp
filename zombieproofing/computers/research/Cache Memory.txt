@@ -1,0 +1,65 @@
+Cache Memory
+
+A faster and smaller segment of memory whose access time is as close as registers are known as Cache memory. In a hierarchy of memory, cache memory has access time lesser than primary memory. Generally, cache memory is very small and hence is used as a buffer.
+
+
+Cache Memory
+Data in primary memory can be accessed faster than secondary memory but still, access times of primary memory are generally in a few microseconds, whereas the CPU is capable of performing operations in nanoseconds. Due to the time lag between accessing data and acting on data performance of the system decreases as the CPU is not utilized properly, it may remain idle for some time. In order to minimize this time gap new segment of memory is Introduced known as Cache Memory.
+
+It is based on principle of locality of reference, which refers to the observation that program tries to access a relatively small portion of their address space at any given time, and repeatedly tries to access some portion of the memory. For ex: In fees department of your college, transactions are accessed frequently to check on the dues.
+
+Role of Cache Memory
+
+The role of cache memory is explained below,
+-    Cache memory plays a crucial role in computer systems.
+-    It provide faster access.
+-    It acts buffer between CPU and main memory(RAM).
+-    Primary role of it is to reduce average time taken to access data, thereby improving overall system performance.
+
+Benefits of Cache Memory
+
+Various benefits of the cache memory are,
+-    Faster access: Faster than main memory. It resides closer to CPU , typically on same chip or in close proximity. Cache stores subset of data and instruction.
+-    Reducing memory latency: Memory access latency refers to time taken for processes to retrieve data from memory. Caches are designed to exploit principle of locality.
+-    Lowering bus traffic: Accessing data from main memory involves transferring it over system bus. Bus is shared resource and excessive traffic can lead to congestion and slower data transfers. By utilizing cache memory , processor can reduce frequency of accessing main memory resulting in less bus traffic and improves system efficiency.
+-    Increasing effective CPU utilization: Cache memory allows CPU to operate at a higher effective speed. CPU can spend more time executing instruction rather than waiting for memory access. This leads to better utilization of CPU’s processing capabilities and higher overall system performance.
+-    Enhancing system scalability: Cache memory helps improve system scalability by reducing impact of memory latency on overall system performance.
+
+In order to understand the working of cache we must understand few points:
+-    Cache memory is faster, they can be accessed very fast
+-    Cache memory is smaller, a large amount of data cannot be stored
+
+Whenever CPU needs any data it searches for corresponding data in the cache (fast process) if data is found, it processes the data according to instructions, however, if data is not found in the cache CPU search for that data in primary memory(slower process) and loads it into the cache. This ensures frequently accessed data are always found in the cache and hence minimizes the time required to access the data.
+
+Cache Performance
+-    On searching in the cache if data is found, a cache hit has occurred.
+-    On searching in the cache if data is not found, a cache miss has occurred.
+
+       Performance of cache is measured by the number of cache hits to the number of searches. This parameter 	of measuring performance is known as the Hit Ratio.
+
+    					Hit ratio=(Number of cache hits)/(Number of searches)
+
+
+Types of Cache Memory
+
+L1 or Level 1 Cache: It is the first level of cache memory that is present inside the processor. It is present in a small amount inside every core of the processor separately. The size of this memory ranges from 2KB to 64 KB.
+
+L2 or Level 2 Cache: It is the second level of cache memory that may present inside or outside the CPU. If not present inside the core, It can be shared between two cores depending upon the architecture and is connected to a processor with the high-speed bus. The size of memory ranges from 256 KB to 512 KB.
+
+L3 or Level 3 Cache: It is the third level of cache memory that is present outside the CPU and is shared by all the cores of the CPU. Some high processors may have this cache. This cache is used to increase the performance of the L2 and L1 cache. The size of this memory ranges from 1 MB to 8MB.
+
+
+Cache vs RAM
+Although Cache and RAM both are used to increase the performance of the system there exists a lot of differences in which they operate to increase the efficiency of the system. 
+
+RAM 												Cache
+RAM is larger in size compared to cache.		The cache is smaller in size.
+ Memory ranges from 1MB to 16GB 	 			Memory ranges from 2KB to a few MB generally.
+It stores data that is currently processed 	It holds frequently accessed data.
+by the processor.
+OS interacts with secondary memory to get	OS interacts with primary memory to get
+ data to be stored in Primary Memory or RAM	 data to be stored in Cache.
+It is ensured that data in RAM are loaded 	CPU searches for data in Cache,
+before access to the CPU. This eliminates	if not found cache miss occur.
+ RAM miss never.	 
+

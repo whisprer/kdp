@@ -1,0 +1,390 @@
+1. Generic Signals
+
+Generic signals will be described as follows (specific diagrams may use other labels for special cases):
+
+Inputs: xn
+Outputs: yn
+Internals: zn
+
+For example, the function of an AND gate on N analogue signals is described as:
+
+z = min ( x1, x2, x3, ..., xN )
+
+
+2. Signed and Unsigned Numbers
+
+Since in analogue logic some analogue signals can take negative values and some can't (see section on diodes and diode logic), for differentiation between the two, the terms "signed", for values that can take negative values, and "unsigned" for those that can't will be used [remember there’s a mathematical limit of 100 for the purposes of these calculations, although it is in fact 100% of the rail voltage irl]:
+
+Unsigned: 0 ? s ? 100
+Signed: -100 ? s ? 100
+
+- [Note that many of these circuits systems will only work with unsigned values. However, you will be able to use them with inputs that are technically signed as long as you can guarantee that the input values will never drop below 0.
+- Alternatively you can choose to ignore the value of the signal if it is negative (forcing it to 0) but using the positive component] (see section 3 below).
+
+Positive and Negative Components
+
+- Splitting signed signals is a big part of how the limitations of calculations taking absolute values only are circumvented, obtain
+.0
+ing the positive and negative components.
+- These are the positive and negative outputs of a ‘splitter’ subcircuit and will be annotated as follows:
+
+Positive output: z+
+Negative output: z-
+
+- [Note that in these cases, only one of z+ and z- can ever be non-zero at the same time and in both cases the signal is unsigned. This splitting is therefore very similar to taking the absolute value, in the sense that one of the two outputs of the splitter will be the absolute value and the other will be 0, so the following is true:
+
+max ( z+, z– ) = |z|
+
+
+|z| is the absolute value of signal “z” : 
+
+Where :
+|z| = |-z|
+0 ? |z|
+
+
+
+------------------------------------------------------------------------------------------------------
+
+As we have noted, there are a number of limitations to what exactly you can do with diode logic, but, some can be worked around, and, with a decent understanding of how the components work and some creative re-arranging of equations, most desired results can be achieved with sufficient circuitry.
+
+. . . . . . . . . . . . . . . . . . . . . . . . . .
+
+Analogue Signal Processing
+
+
+Dealing with Signal Duality - Conversion Techniques
+
+- analogue systems have some major drawbacks - the most significant of which is the lack of decision-making.
+- taking some input values and doing  theoretical number crunching makes it easy to forget the actual reasons for he desired outcome - the end goals.
+- there’s more than just controling values of outputs, i.e. creating arbitrary voltages.
+- although sometimes that's great and it's exactly what you want, often it's not that exciting.
+
+- The digital circuits looked at in depth, elsewhere on this site, on the other hand, are anything but lacking excitement, hence the ability to use a digital signal control the parameters of an analogue calculation and the ability to make digital (TRUE / FALSE) decisions based upon an analogue system would be desirable.
+- This is where  a range of conversion techniques, I.e. we are back to ADCs and DACs but from the analogue logic end rather than the digital POV.
+
+------------------------------------------------------------------------------------------------------
+
+
+Digital to Analogue Conversion
+
+- Since the purpose of Digital to Analogue Conversion (DAC), in a broad sense, is to conditionally modify the inputs to an analogue circuit - for example, "if clock is high, set maximum limit on tempo to 60bpm”.
+- The first part of that sentence is digital (clock is either high or low) and the second part is analogue (a maximum limit on the value of tempo).
+
+Basic Digital to Analogue Conversion:
+Probably the simplest methods of Digital to Analogue Conversion is the following:
+
+Enable function based DAC
+- The enable input (on a digital sequential logic function for example) responds only to the digital component of the input signal and will act as a switch to turn everything inside the logic circuit on or off.
+- If the digital circuit is controlling an analogue circuit then an on / off switch for the analogue circuit has been created.
+
+- One of the useful things about an analogue circuit is that you can set the analogue value of it's output to be any integer in the [mathematical] range -100 to +100.
+- This means that when it’s switched on, the analogue circuit can generate any (fixed) value desired.
+- When it’s switched it off it will be stuck at 0 though.
+- the the off=0% behaviour can't e directly modified, but some analogue processing can be done afterwards if need be.
+
+- now an arbitrary analogue value can be assigned to any digital signal, or to use some technical parlance, it has been given it a "weight". This directly gets around the analogue / signal duality issue, by explicitly forcing the analogue signal to have some direct relation to the digital.
+
+
+------------------------------------------------------------------------------------------------------
+
+
+
+A Note On the Subtleties of Enabling Microchips
+
+- One of the coolest features of certain digital circuits is the ability to disable and enable them at will.
+
+- When enabled the circuit behaves normally,
+- When disabled, all of the devices in the circuit turn off - any components act like they don't exist,
+- vibrators stop oscillating (and their sync desyncs), logic devices stop updating and, crucially, all internal wiring goes to 0 (for both analogue and digital components).
+- Note that if internal wiring goes to 0, so do all outputs from the  circuit.
+
+- Whilst the internal wiring all goes to zero, internal states of components are retained.
+- So a Timer, Counter, Selector, Toggle etc., when re-enabled, will return to it's previous value.
+- This highlights a couple of important system design constraints when working with components inside such logic circuits:
+
+Firstly;
+- if you create a system to create a permanent switch or set reset (or any other logic tool for state retention) that stores the current state in the wire, rather than internally to a component, then it will lose it's state when the microchip is disabled.
+- For example, the following images shows two implementations of permanence:
+
+
+fig 2.2.3 Permanent Switches
+
+- The left circuit shows the switches before activation, middle is after activation and on the right is after the circuit has been deactivated and reactivated.
+- In the loop-backed OR, the state is retained in the wire.
+- In the counter, the state is retained internal to the component.
+- For the most part, this is irrelevant - the overall behaviour is the same for both devices, but if you place them in a circuit then disable and re-enable it, then the loopback OR will reset, the counter will not (as shown by the right hand part of that image).
+
+
+Secondly;
+- if you have any edge-triggered devices in your system, then the re-enabling of the circuit may cause them to be re-triggered, as the signal goes from FALSE to TRUE.
+
+
+[Sub-note on Edge-Triggered Logic;
+
+- In digital electronics, a device is described as edge-triggered if it updates at the instant a change of state is seen on the input, rather than just updating constantly in response to changes in the input.
+- In most cases, it is the change from a FALSE value to a TRUE value, known as a rising edge - Alternatively, a transition from TRUE to FALSE is known as falling edge.
+
+- Edge-triggered inputs include counters, toggles, select switches, certain timer inputs, all reset signals and a whole host of other thing].
+
+
+- Overall, these are just design constraints.
+- They could cause problems if you aren't aware of them, or they can be leveraged to your advantage.
+- Sometimes it's a good thing that everything resets when the circuit is re-enabled - you can design an entire sub-circuit reset around that very premise, typically so that upon each activation of the sub-circuit it returns to a quiescent (or otherwise predetermined) state.
+- neat.
+
+
+
+------------------------------------------------------------------------------------------------------
+
+
+Analogue To Digital Conversion
+
+- As mentioned earlier, analogue doesn't have the ability to make decisions, so the ability to generate digital signals from an analogue source is very important to get a whole lot of use out of the analogue processing tools available.
+
+
+Thresholding
+- The simplest form of analogue to digital conversion is thresholding;
+- I.e., taking an analogue signal and saying, "if the value is greater than x, do that thing that you do".
+- Now one of the reasons for explaining the comparator function of OpAmps becomes apparent!
+
+Window comparators?
+
+
+Comparators - Greater / Less Than
+
+- comparators are great if you have some fixed maximum and minimum values for your range, but sometimes you will have ranges that move.
+- technically, to swap between one range and another you could switch comparators quite easily, but this doesn't help if you want the activation range to be more dynamic.
+- What’s really needed is a method for comparing 2 analogue signals, which is again pretty simple to do. To create a system where input 1 must be greater than input 2 to activate:
+
+x1 > x2
+x1 - x2 > 0
+
+- So, simply finding the difference between x1 and x2 (using subtraction), if the difference is greater than 0, then x1 > x2
+
+- However, note comparator is one of those logic devices that takes the absolute value of its input.
+- This means that all negative values will be treated as positive, which leads to an issue with the above equation.
+In this case it means that _any_ non-zero difference will trigger the output.
+- So as is often the case when subtracting, we split the signal and take the positive component only, to create an analogue ‘comparator’ circuit as shown:
+
+
+fig 3.2.1 Analogue ‘Comparator’ circuit
+
+
+- Note the offset placement here.
+- It actually takes up the entire range of the comparator, but at exactly zero the comparator does not trigger the dc offset source.
+- As the signal has been split, this means that any negative value will also read 0, so the "greater than" comparison has been accurately created.
+
+
+Comparators - Equality
+- In the ‘comparator’ circuit above,  an inequality test was in fact made, before adding the splitter.
+- So, inverting the "not equals to" test to a "not not equal to" test, Or, if you prefer an "equal to" test we can create an equality test - simple!
+
+- Well, sort of…
+- Using that method, the difference between the two signals would have to be exactly zero, they really would have to be identical.
+- However, in analogue systems, depending on what your input sources are, having two signals at exactly the same value is quite rare, So we will often need margins of error on concepts like equality.
+
+- Again, this is very simple, remove the splitter and place the offset as shown:
+
+
+fig 3.3.1. Equality Comparator with 5% Margins of Error
+
+
+- ‘Hanging’ the offset over the back of the comparator allows you to detect at 0% (unlike before), and up to a certain percentage.
+- The above detects anything from 0-5% so as long as the absolute value of the difference between the two inputs is smaller than 5, there is "equality".
+- To clarify with examples:
+
+  x1  |  x2  | Output |
+      |      |        |
+  15  |  17  |  TRUE  |
+  17  |  15  |  TRUE  |
+  95  |  94  |  TRUE  |
+  95  |  89  |  FALSE |
+  89  |  94  |  FALSE |
+
+- The significant point being that it doesn't matter which which is greater, as long as they are within 5% of each other then equality condition for this circuit is satisfied.
+
+
+Comparators - Dynamic Ranges
+
+- having covered static ranges, what about dynamic ranges?
+- a mixture of the techniques above will need to be used.
+- In the simplest form, a dynamic range has, say, a fixed upper bound and a lower bound that can move and you can determine whether you are in the range by testing for each boundary condition separately and ANDing the result. 
+- So for upper and lower boundaries of bhi & blo:
+
+bhi > i > blo
+
+Which becomes:
+
+( bhi > i ) AND ( i > blo )
+
+or, if you prefer:
+
+( i < bhi ) AND ( i > blo )
+
+- Which is a horrible mix of analogue and digital systems all munged into a single  none too pretty equation, but should be vaguely straightforward to understand:
+- To be in range you must be smaller than the high boundary and greater than the low boundary [mention window comparator if discussed earlier].
+
+- However, there may be dynamic ranges that are better described by a center point, where the input has to be within a fixed distance from that center.
+- This is actually the same scenario as the equality with fixed margin of error, described above.
+- Or you could describe your range as the lower boundary that moves and the range is fixed, so
+
+bhi = blo + 15
+
+Where 15 is the size of the range. For this we use the following:
+
+
+fig 3.4.1 Sliding Range with Fixed Width
+
+
+- Noting that both upper and lower boundary are tested for inside a single ‘comparator’ circuit.
+- In addition to not having the second ‘comparator’ circuit, it’s also not necessary to generate the value of the upper boundary - it's implied in this system, so no need for an adder circuit or anything fiddly like that.
+
+- We can also have circuits where a center point and range size is input, or lower bound and size of the range, which would involve a bit of analogue processing to generate upper and lower bounds.
+- Really it depends on what exactly you are testing for.
+- Depending on exact needs and the nature of the dynamic range in question, more of the circuit can be pushed into the analogue part, more into the digital part or more into the ‘comparator(s)’.
+- It's actually a remarkably flexible system and there are a lot of different techniques that can be employed here.
+
+
+------------------------------------------------------------------------------------------------------
+
+
+Summary
+
+- Being able to switch between the analogue and digital signal processing models at will, and the introduction of thresholding & comparators / decision making opens up a whole world of hybrid analogue / digital logic.
+- without these constraints the inputs of analogue signals aren’t limited to being simple voltage values, and the outputs no longer have to just be a simple voltage value also.
+
+
+------------------------------------------------------------------------------------------------------
+
+
+A Few Notes On Scaling
+
+- I don’t know if this will prove useful when you can simply use an amplifier or attenuator module and adjust to needs but I’m gonna dip a little into the math just for the sake of completeness and to provide inspiration - who knows where it might apply usefully…
+
+
+Basic Scaling
+
+- Just to clarify, when talking about "scaling" here, what is meant is multiplying or dividing an analogue signal by a fixed value (known as the scaling coefficient).
+- So, doubling or halving the value of a signal are examples of scaling.
+- The key thing to note is that it is an operation that has a single input, so is very different to more familiar multiplication and division operations, where you you would want to multiply one analogue signal by another.
+- in fact it is the same thing occurring, just one signal in the equation comes from a fixed, internal [to the circuit] voltage source [the scaling coefficient].
+
+
+Basic Integer Up-Scaling
+- Scaling a signal up is actually quite a simple thing to do, as long as you only want to scale it by an integer (e.g. doubling, tripling, etc., not multiplying by 2.5, for example).
+For example, a coefficient of three (which it turns out is a very useful scaling coefficient, see later):
+
+z = kx
+z = 3x
+z = x + x + x
+
+Where k is the scaling coefficient.
+
+- We simply add the signal to itself k times.
+- fine until k becomes unreasonably large, at which point it may be significantly more efficient to find the prime factors* of the number and re-express the addition using that.
+- For the example of k = 100:
+
+z = kx
+z = 100x
+z = (2 . 2 . 5 . 5) x
+
+- Rather than an adder with 100 stages, instead 2 two-stage adders and 2 5-stage adders can be used, which is significantly more efficient with respect to both resources and tedious ‘wiring’.
+
+
+
+* every natural number greater than 1 is either a prime itself or can be ‘factorized’ as a product of primes that is unique up to their order.
+The numbers greater than 1 that are not prime are called composite numbers.
+Writing a number as a product of prime numbers is called a prime factorization of the number.
+The terms in the product are called prime factors. The same prime factor may occur more than once.
+Using this knowledge we can break scaling coefficients  down into manageable factors that can be manipulated with            smaller adder building blocks.
+
+
+
+Basic Downscaling
+
+- Downscaling is significantly more tricky that upscaling so to begin with here’s a simpler method that is essentially a cheat;
+- it's pretty efficient for many signals, amongst other things working for any device where the analogue output is proportional to it's current state.
+
+
+Downscaling Timer Outputs
+- considering the process for downscaling a time operates on the concept that the output is proportional to time,
+- For the case of halving, we can achieve it by doubling the maximum period of the timer and then subtracting 50% from that timer output, as shown below:
+
+
+fig 1.2.2. Graphical Explanation of the solution [switch sensor to timer, radius is period?] 
+
+
+- With that in mind, scaling up along the x-axis by increasing target time, things then get a bit complex as it really depends on what you want the time period to do;
+
+- If you want it to count upwards to 50% and then stop after T seconds then you can simply set the target time to 2T and then limit the signal to a maximum of 50%.
+
+- The timer takes a directional input and the comparator is acting as an analogue ‘comparator’ circuit  to trigger a change of direction (using the toggle) when the output is outside the range (0% < o ?50%).
+
+- Of course, as shown by the dotted line, the nature of subtraction means that we could well end up with negative value output, so we use a splitter to discard any value below zero, as shown below:
+
+
+fig 1.2.3. Sensor Scaling Circuit [again, sensor to time, radius to period?]
+
+
+- If you want to create a triangle wave, where T rises to 50% and then starts to descend back down, you'll have to trigger that manually, using something like the following:
+
+
+fig 1.2.3. Triangle Wave Generator with 50% scaling on the output
+
+
+Generalisation for any Scaling Factor
+- To summarise, downscaling a signal from a [timer ] by K:
+
+	Alter your Max [period] to be k times bigger than you require
+	Shift the value down so that the value at [target time] = 0 is 100/k.
+	To achieve this, for example:
+
+	1.	k=2, subtract 50.
+	2.	k=3, subtract 66.66 (or 67).
+	3.	k=4, subtract 75.
+
+Split the resultant signal and take the positive component only.
+
+
+- The above will work for division by any number > 1 and is not just limited to integers.
+- The proof is shown below:
+
+The original line is:
+
+pt = 100 - 100 (x/R) = 100(1 - x/R)
+
+The desired line is:
+
+pt = 100(1 - x/R)/k
+
+Where k is the scaling coefficient and R is the maximum period.
+
+- So, scaling the x axis by k on the original equation:
+
+pt = 100(1 - x/rk)
+
+- then subtracting the required value to achieve the transposition;
+
+- This is a little more complex than you might think,
+- to subtract a value that is equivalent to division by k at pt=100:
+
+100 - y = 100/k
+-y = 100/k - 100
+y = 100 - 100/k
+y = 100(1-1/k)
+
+So:
+
+pt = 100(1 - x/rk) - y
+pt = 100(1 - x/rk) - 100(1-1/k)
+pt = 100(1 - x/rk - 1 + 1/k)
+pt = 100(1/k - x/k)
+pt = 100(1-x) / k
+
+- So, since this works for any value of K, arithmetically, upscaling is also possible using this method.
+
+
+
+------------------------------------------------------------------------------------------------------
+

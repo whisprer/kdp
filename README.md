@@ -1,18 +1,34 @@
-[README.md]
+<!-- repo-convergence:readme-header:start -->
+<!-- repo-convergence:language=FILL_ME -->
+# kdp
 
 <p align="center">
-  <a href="https://github.com/whispr-dev/kdp">
-    <img src="https://img.shields.io/github/stars/whispr-dev/kdp?style=for-the-badge" alt="GitHub stars" />
+  <a href="https://github.com/whisprer/kdp/releases">
+    <img src="https://img.shields.io/github/v/release/whisprer/kdp?color=4CAF50&label=release" alt="Release Version">
   </a>
-  <a href="https://github.com/whispr-dev/kdp/issues">
-    <img src="https://img.shields.io/github/issues/whispr-dev/kdp?style=for-the-badge" alt="GitHub issues" />
+  <a href="https://github.com/whisprer/kdp/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-Hybrid-green.svg" alt="License">
   </a>
-  <a href="https://github.com/whispr-dev/kdp/fork">
-    <img src="https://img.shields.io/github/forks/whispr-dev/kdp?style=for-the-badge" alt="GitHub forks" />
+  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg" alt="Platform">
+  <a href="https://github.com/whisprer/kdp/actions">
+    <img src="https://img.shields.io/badge/build-workflow%20not%20set-lightgrey.svg" alt="Build Status">
   </a>
 </p>
 
-# kdp
- various writings
+[![GitHub](https://img.shields.io/badge/GitHub-whisprer%2Fkdp-blue?logo=github&style=flat-square)](https://github.com/whisprer/kdp)
+![Commits](https://img.shields.io/github/commit-activity/m/whisprer/kdp?label=commits)
+![Last Commit](https://img.shields.io/github/last-commit/whisprer/kdp)
+![Issues](https://img.shields.io/github/issues/whisprer/kdp)
+[![Version](https://img.shields.io/badge/version-3.1.1-blue.svg)](https://github.com/whisprer/kdp)
+[![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-lightgrey.svg)](https://www.microsoft.com/windows)
+[![Language](https://img.shields.io/badge/language-FILL_ME-blue.svg)](#)
+[![Status](https://img.shields.io/badge/Status-Alpha%20Release-orange?style=flat-square)](#)
+
+<p align="center">
+  <img src="/assets/kdp-banner.png" width="850" alt="kdp Banner">
+</p>
+<!-- repo-convergence:readme-header:end -->
+
+various writings
 
 this is tghe main chunk of my homeowrk prep for building towards generating apssive income stream via amazon kdp . so basically it's just stories i wrote.

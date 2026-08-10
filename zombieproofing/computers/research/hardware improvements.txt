@@ -1,0 +1,12 @@
+ive also been podering where improvements/altertions could be made in current traaditional computer architecture could be made so as to best adapt processors etc. for design to the specific purposes of an llm or similar 'ai':
+
+- improvements in speed of register performance would be of greatest advantage [yet to look into specifics of how any particular aspect of register design might be custom tweaked to the requirements of llm/ai calcs specifically - may been noe avail].
+
+- if anything this is where concepts ofhybrid reduced-complex isa so as to employ some form of multiplexing controller with both a complex longword and parallel short word processors with best of each world somethhigng a bit of a half havard half vn computer that is customied such tat the longwords are chosen so specifically for only llm etc. use tey can be reduced down enough in nu mber even tho specialised at no cost to use to the point they can still be considered reduced instuction set.  
+
+
+- memory S-ram bistables could be sped up by altering the choice of jk/rs/etc. to be specifically suited to the problems most used for calcs in ai math
+- memory D-ram caps could have alternate electret choice to improve performance likewise
+
+- custom register indexing etc. could probably be designed with inspiration from stuff like sic and sic/xe to beneift our specific use case
+
