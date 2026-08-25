@@ -1,0 +1,138 @@
+Cache Organization | Set 1 (Introduction)
+
+Cache is close to CPU and faster than main memory. But at the same time is smaller than main memory. The cache organization is about mapping data in memory to a location in cache. A Simple Solution: One way to go about this mapping is to consider last few bits of long memory address to find small cache address, and place them at the found address. Problems With Simple Solution: The problem with this approach is, we lose the information about high order bits and have no way to find out the lower order bits belong to which higher order bits. 
+
+[cache_org_simpl.jpg]
+
+Solution is Tag: To handle above problem, more information is stored in cache to tell which block of memory is stored in cache. We store additional information as Tag
+
+[cache_org_tag.jpg]
+
+What is a Cache Block? Since programs have Spatial Locality (Once a location is retrieved, it is highly probable that the nearby locations would be retrieved in near future). So a cache is organized in the form of blocks. Typical cache block sizes are 32 bytes or 64 bytes. 
+
+[cache_org_blok.jpg]
+
+The above arrangement is Direct Mapped Cache and it has following problem We have discussed above that last few bits of memory addresses are being used to address in cache and remaining bits are stored as tag. Now imagine that cache is very small and addresses of 2 bits. Suppose we use the last two bits of main memory address to decide the cache (as shown in below diagram). So if a program accesses 2, 6, 2, 6, 2, …, every access would cause a hit as 2 and 6 have to be stored in same location in cache. 
+
+[cache-org-dir-prob.jpg]
+
+Solution to above problem – Associativity What if we could store data at any place in cache, the above problem won’t be there? That would slow down cache, so we do something in between. 
+
+
+
+Advantages and downsides of different cache employer techniques:
+Direct-Mapped Cache:
+
+Advantages:
+-     Simple and easy to put into effect
+-     Low hardware overhead
+-    Fast hit time
+    
+Disadvantages:
+-    High pass over fee because of restrained wide variety of cache blocks
+-    Increased war misses because of block collisions
+-    Limited flexibility in phrases of block placement
+     
+
+Set-Associative Cache:
+
+Advantages:
+ -    Higher hit fee than direct-mapped cache because of more than one blocks being saved in each set
+ -   More bendy block placement than direct-mapped cache
+ -   Lower struggle misses as compared to direct-mapped cache
+
+Dsadvantages:
+-    Higher hardware overhead than direct-mapped cache
+-    Longer hit time than direct-mapped cache because of looking multiple blocks
+-    Limited scalability due to fixed quantity of ways in step with set
+     
+
+Fully-Associative Cache:
+
+Advantages:
+-    Highest hit rate amongst cache businesses
+-    Most flexible block placement
+-    No struggle misses because of fully-associative mapping
+     
+Disadvantages:
+-    Highest hardware overhead among cache agencies
+-    Longest hit time due to searching all blocks in cache
+-    Limited scalability because of constrained physical area and huge tag storage necessities
+
+
+
+Multilevel Cache Organisation
+
+Cache is a random access memory used by the CPU to reduce the average time taken to access memory. 
+
+Multilevel Caches is one of the techniques to improve Cache Performance by reducing the “MISS PENALTY”. Miss Penalty refers to the extra time required to bring the data into cache from the Main memory whenever there is a “miss” in the cache. 
+For clear understanding let us consider an example where the CPU requires 10 Memory References for accessing the desired information and consider this scenario in the following 3 cases of System design : 
+
+Case 1 : System Design without Cache Memory 
+
+CPU --------------------Main Memory
+
+Here the CPU directly communicates with the main memory and no caches are involved. 
+In this case, the CPU needs to access the main memory 10 times to access the desired information. 
+
+Case 2 : System Design with Cache Memory 
+
+CPU-------Cache Memory-------Main Memory
+
+Here the CPU at first checks whether the desired data is present in the Cache Memory or not i.e. whether there is a “hit” in cache or “miss” in the cache. Suppose there is 3 miss in Cache Memory then the Main Memory will be accessed only 3 times. We can see that here the miss penalty is reduced because the Main Memory is accessed a lesser number of times than that in the previous case. 
+
+Case 3 : System Design with Multilevel Cache Memory 
+
+CPU------L! Cache -- L2 Cache ------Main Memory
+
+Here the Cache performance is optimized further by introducing multilevel Caches. As shown in the above figure, we are considering 2 level Cache Design. Suppose there is 3 miss in the L1 Cache Memory and out of these 3 misses there is 2 miss in the L2 Cache Memory then the Main Memory will be accessed only 2 times. It is clear that here the Miss Penalty is reduced considerably than that in the previous case thereby improving the Performance of Cache Memory. 
+
+NOTE : 
+We can observe from the above 3 cases that we are trying to decrease the number of Main Memory References and thus decreasing the Miss Penalty in order to improve the overall System Performance. Also, it is important to note that in the Multilevel Cache Design, L1 Cache is attached to the CPU and it is small in size but fast. Although, L2 Cache is attached to the Primary Cache i.e. L1 Cache and it is larger in size and slower but still faster than the Main Memory. 
+
+`Effective Access Time = Hit rate * Cache access time + Miss rate * Lower level access time	
+
+Average access Time For Multilevel Cache:(T_avg) 
+
+T_avg = H1 * C1 + (1 – H1) * (H2 * C2 +(1 – H2) *M )
+
+where 
+H1 is the Hit rate in the L1 caches. 
+H2 is the Hit rate in the L2 cache. 
+C1 is the Time to access information in the L1 caches. 
+C2 is the Miss penalty to transfer information from the L2 cache to an L1 cache. 
+M is the Miss penalty to transfer information from the main memory to the L2 cache. 
+
+e.g. the Average memory access time for a processor with a 2 ns clock cycle time, a miss rate of 0.04 misses per instruction, a missed penalty of 25 clock cycles, and a cache access time (including hit detection) of 1 clock cycle. Also, assume that the read and write miss penalties are the same and ignore other write stalls;
+
+Average Memory access time(AMAT)= Hit Time + Miss Rate * Miss Penalty. 
+
+Hit Time = 1 clock cycle (Hit time = Hit rate * access time) but here Hit time is directly given so, 
+
+Miss rate = 0.04 
+
+Miss Penalty= 25 clock cycle (this is the time taken by the above level of memory after the hit) 
+
+so, AMAT= 1 + 0.04 * 25 
+AMAT= 2 clock cycle 
+
+according to question 1 clock cycle = 2 ns 
+
+AMAT = 4ns 
+
+
+
+Advantages of Multilevel Cache Organization:
+
+- Reduced access time: By having multiple levels of cache, the access time to frequently accessed data is greatly reduced. This is because the data is first searched for in the smallest, fastest cache level and if not found, it is searched for in the next larger, slower cache level.
+- Improved system performance: With faster access times, system performance is improved as the CPU spends less time waiting for data to be fetched from memory.
+- Lower cost: By having multiple levels of cache, the total amount of cache required can be minimized. This is because the faster, smaller cache levels are more expensive per unit of memory than the larger, slower cache levels.
+- Energy efficiency: Since the data is first searched for in the smallest cache level, it is more likely that the data will be found there, and this reduces the power consumption of the system.
+
+
+Disadvantages of Multilevel Cache Organization:
+- Complexity: The addition of multiple levels of cache increases the complexity of the cache hierarchy and the overall system. This complexity can make it more difficult to design, debug and maintain the system.
+- Higher latency for cache misses: If the data is not found in any of the cache levels, it will have to be fetched from the main memory, which has a higher latency. This delay can be especially noticeable in systems with deep cache hierarchies.
+- Higher cost: While having multiple levels of cache can reduce the overall amount of cache required, it can also increase the cost of the system due to the additional cache hardware required.
+- Cache coherence issues: As the number of cache levels increases, it becomes more difficult to maintain cache coherence between the various levels. This can result in inconsistent data being read from the cache, which can cause problems with the overall system operation.
+ 

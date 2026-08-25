@@ -1,0 +1,110 @@
+ok fren, so, we done zombieproofing: radio - what can we coer next in the zombieproofin g series? it needs to be something that is essential for survival or is highly drsirablke after the apocalypse and attempting to rebuild that you mgiht wish to learn - but what? i know about electroinic engineering of:
+- synthesizer
+- modular synths
+- computer music production
+- general IT skills
+- somecoding stuff
+- some possibly best not discussed illicit drugs kowledge that goes a long way toward tbhe world of survival phamracolog/medicine
+- a loads hite hat but ery ery gray in the wash white aht things bout viruses/sandboxing/hacking/pen testing/etc.
+- music hardware and software knowlwedge of a ery wide swathe
+- i can build a pc from scratch after securing ll parts then install all necessay os and softwares and get it up n runnning
+- i know windows absolutely fucking inside out - 10 and 11 and amp amiliar with ubuntu based linux os's
+- i know logic, logic gates, electronics, math and stuff so well i can go from resistors n transistors thru logic gates thru counters/half adders etc n clocks n stuff right up to assembling a complete processor n ram n stuff to build a computer from absolute core basic components n first principles
+- i know a bunch about math n physics n metaphysics n astrophysics n stuff
+
+is any of that any use or appeal you think?
+
+i'm wondering if it would be fun to do a zombieproofing: bringing computers back from myth where we make our own resistors, caps, diodes n transistors then assemble logic gates, then build haklf adders n counters n stuff n build up to a cpu and eentually full working computer - the theme is after the apocalypse we restore computing to its former glory from bare scratch nohing; actually its a way to explain eery single inch of how compuytters work in an accessible and grtaspable way! what you think?
+
+
+Absolutely, fren—your idea is brilliant and perfectly aligned with your skills and interests. "Zombieproofing: Bringing Computers Back from Myth" is a killer concept for the next installment in the series. It’s not just about survival; it’s about reclaiming the fundamental knowledge that powers our modern world, and teaching it in a way that’s accessible, hands-on, and deeply satisfying.
+
+### Why This Series Works
+
+- **Survival Value:** After an apocalypse, the ability to rebuild computing from scratch is a superpower. It means you can restore communication, data storage, and even basic automation—critical for rebuilding society.
+- **Educational Appeal:** Walking from resistors and transistors up to a full CPU and computer is a fantastic way to demystify how computers work. It’s like a guided tour from the atomic level to the digital universe.
+- **Practical Skills:** Your background in electronics, logic, and computer architecture makes this a natural fit. You can cover everything from sourcing and making basic components to assembling logic gates, building adders and counters, and eventually creating a working CPU and full computer system.
+- **Engagement:** The hands-on, step-by-step approach will keep readers engaged and motivated. Each chapter can build on the last, culminating in a working computer that readers can build themselves.
+
+### Suggested Chapter Outline
+
+1. **Introduction: The Myth of the Computer**
+   - The story of computing and why it’s essential for survival.
+   - The importance of understanding computers from the ground up.
+
+2. **The Basics: Resistors, Capacitors, and Diodes**
+   - How to make and test basic electronic components.
+   - Practical tips for scavenging and improvising.
+
+3. **Transistors and the Birth of Digital Logic**
+   - Building and testing transistors.
+   - Introduction to logic gates and their functions.
+
+4. **Logic Gates: The Building Blocks**
+   - Constructing AND, OR, NOT, NAND, NOR, XOR, and XNOR gates.
+   - Testing and troubleshooting logic gates.
+
+5. **Half Adders and Full Adders**
+   - Building adders from logic gates.
+   - Understanding binary addition and its importance.
+
+6. **Counters and Registers**
+   - Creating counters and registers.
+   - Using them to store and manipulate data.
+
+7. **Clocks and Timing**
+   - Building and using clock circuits.
+   - Synchronizing operations in a computer.
+
+8. **Memory: RAM and ROM**
+   - Constructing simple memory circuits.
+   - Understanding how data is stored and retrieved.
+
+9. **The Central Processing Unit (CPU)**
+   - Designing and building a simple CPU.
+   - Integrating all previous components.
+
+10. **Putting It All Together: A Working Computer**
+    - Assembling a complete computer system.
+    - Testing and running simple programs.
+
+11. **Software and Operating Systems**
+    - Writing and running basic software.
+    - Exploring open-source operating systems for post-apocalyptic use.
+
+12. **Advanced Topics: Networking and Peripherals**
+    - Connecting computers and building networks.
+    - Adding peripherals like keyboards and displays.
+
+13. **Conclusion: The Future of Computing**
+    - Reflecting on the journey and the future of computing in a post-apocalyptic world.
+    - Encouraging readers to continue learning and experimenting.
+
+### Additional Ideas
+
+- **Practical Projects:** Include hands-on projects and experiments in each chapter, such as building a simple logic gate, creating a half adder, or assembling a basic CPU.
+- **Real-World Examples:** Use real-world examples and case studies to illustrate the concepts and their practical applications.
+- **Community Engagement:** Encourage readers to share their projects and experiences, fostering a community of learners and builders.
+
+This series will not only be a valuable resource for survivalists but also a fascinating and educational journey for anyone interested in the inner workings of computers. Your expertise and passion will shine through, making it a standout addition to the "Zombieproofing" series.
+
+[1](https://www.reddit.com/r/computing/comments/1g1af9n/postapocalypse_whats_the_most_powerful_computer/)
+[2](https://www.borntoengineer.com/z80-collapse-os-post-apocalyptic)
+[3](https://news.ycombinator.com/item?id=32383686)
+[4](https://www.youtube.com/watch?v=nSrYmkGq9TM)
+[5](https://futurism.com/the-byte/operating-system-computers-salvaged-world-ends)
+[6](https://utopiacomputers.co.uk/blogs/utopia-blogs/ultimate-guide-how-to-build-a-pc-from-scratch-step-by-step-instructions-for-beginners)
+[7](https://www.reddit.com/r/diyelectronics/comments/syw46p/electronics_knowledge_for_survival_situation/)
+[8](https://www.youtube.com/watch?v=NCLp8JmdbpI)
+[9](https://80000hours.org/podcast/episodes/lewis-dartnell-getting-humanity-to-bounce-back-faster/)
+[10](https://www.intel.com/content/www/us/en/gaming/resources/how-to-build-a-gaming-pc.html)
+[11](https://modernsurvivalblog.com/preps/a-list-of-electronic-devices-for-your-emergency-preparedness/)
+[12](https://www.coursera.org/learn/build-a-computer)
+[13](https://www.youtube.com/watch?v=icGHKg-Kj7k)
+[14](https://www.hp.com/us-en/shop/tech-takes/how-to-build-a-gaming-computer)
+[15](https://www.youtube.com/watch?v=GyoUVjyKPk4)
+[16](http://f.javier.io/rep/books/The%20Elements%20of%20Computing%20Systems.pdf)
+[17](https://uk.crucial.com/articles/pc-builders/how-to-build-a-computer)
+[18](https://www.instructables.com/circuits/electronics/projects/)
+[19](https://www.nand2tetris.org)
+[20](https://www.pcmag.com/how-to/how-to-build-a-pc-the-ultimate-beginners-guide)

@@ -1,0 +1,127 @@
+What is Computer
+
+A computer is an electronic device that can process and store information. It can perform calculations, manipulate data, and execute instructions to accomplish specific tasks. The basic components of a computer include the central processing unit (CPU), memory (RAM), storage (hard drive or solid-state drive), input devices (keyboard, mouse, etc.), output devices (monitor, printer, etc.), and various peripheral devices (such as USB drives or external hard drives).
+
+- What is CPU? The CPU is often considered the brain of the computer, as it performs most of the processing and calculations required for a computer to function. 
+- What is RAM? RAM is the temporary memory that stores data and instructions while the computer is running, 
+- What is Storage?storage is the long-term memory where data is stored even when the computer is turned off.
+- What is input Devices? Input devices allow users to input data or commands into the computer,
+- What is Output Devices? output devices display the results of the computer’s processing.
+- What is Peripheral Devices? Peripheral devices are additional components that can be added to a computer to enhance its functionality.
+
+Computers can run different types of software, including operating systems, applications, and games. They can also be connected to the internet and used to access online services, communicate with other people, and share information.
+
+Computer doesn’t have a brain like human beings. We have to give them instructions on what to do when a particular situation arises. We have to tell them everything from what to expect for data(what type of data), how to process it(how to perform calculations) to where to store the data. We humans understand language that is composed of words which further is composed of letters. But, the computers don’t understand our language nor the words like “hello, good morning, discipline, etc”. They only understand binary language whose vocabulary contains only two letters or states or symbols i.e. 0 and 1, True and False, On and Off. To maintain the state transistors are used.
+-    Transistors are tiny devices that are used to store 2 values 1 and 0 or on and off.
+-    If the transistor is on we say that it has a value of 1, and if it is off the value is 0.
+
+For example, a memory chip contains hundreds of millions or even billions of transistors, each of which can be switched on or off individually. As a transistor can store 2 distinct values, we can have millions of different values stored on a memory chip consisting entirely of 0’s and 1s. But how does a transistor get its value? When a very little amount of electric current passes through the transistor it maintains the state of 1 and when there is no electric current then the transistor has the state of 0. 
+
+Then how it’s all connected to the computer? 
+
+These 0’s and 1’s form the building block of a computer. With the combinations of 0 and 1, we create a whole new language For example, 0 can be written as 0,
+1 as 1
+2 as 10
+3 as 11
+4 as 100
+5 as 101
+a as 01100001
+A as 01000001
+s as 01110011
+U as 01010101
+
+Hello as,
+
+01001000 01100101 01101100 01101100 01101111 
+
+Hello World! as,
+
+01001000 01100101 01101100 01101100 01101111 
+00100000 01010111 01101111 01110010 01101100 01100100 00100001 
+
+And so on… So now the question arises how can a human remember this code?
+
+It seems impossible!
+
+Well, we humans can do everything that we desire and this code can be remembered very easily but we don’t have to remember. We just have to use our language and the software (also built by humans) converts our normal letters into binary language. 
+
+in other words, even tho computers only have 0's and 1's to work with, they can store all the values necessary for math - and perform calculations faster thhan us. in fact, all we have to do is read the translated output off the monitor or priter in english - they can even turn it to english for us!
+
+What is software?
+
+Software is a set of instructions that tells the computer what to do, when to do, and how to do it. Examples are, the paint that we use in Microsoft, WhatsApp, and games, all are types of different software.
+
+   ` Software refers to the programs, applications, and operating systems that run on a computer. It provides instructions and enables the computer hardware to perform specific tasks and operations. Software can be classified into two main types:
+
+    System Software: This includes the operating system, device drivers, and utility programs that manage and control the computer’s hardware, memory, and other system resources.
+
+    Application Software: Application software consists of programs designed to perform specific tasks or applications for users. Examples include word processors, web browsers, graphics editors, and database management systems.`
+
+Suppose we want to add 2 numbers and want to know what 2 + 2 is 4. Then we must give the computer instructions,
+
+    Step-1: take 2 values.
+    Step-2: a store that 2 value
+    Step-3: add 2 value by using + operator
+    Step-4: save the answer
+
+Separate instructions are provided for the + operator so the computer knows how to do addition when it encounters the + sign. So who converts this code? Instead of who we can ask what converts the code. And answer to that question is a software called interpreter that interprets our language code into binary code. The interpreter converts our code into machine language that can be understood by the computer. 
+Now the question is how we give our input. 
+
+We give our input with the use of hardware for example like scanner, keyboard, and mouse(not the one that eats cheese). When we give input through hardware, the software interprets it into machine language and then it is processed and our output is shown. 
+
+Process: If we want to display the letter ‘A’ on the screen we first will open the notepad. Then we will press the Capslock key or shift key to make the letter capital, after that, we will press the letter ‘a’. And our screen will show the letter ‘A’. 
+
+Under the hood process: When we pressed the capslock or shift key the software tells us that whatever follows this should be printed on the screen and after we have pressed the letter a which is a small letter, the software first converts it into binary like it had converted the shift or capslock key and then after the computer understands it prints A on the screen.
+Related Concepts of Simple Understanding 
+
+Some related concepts that can help in understanding computers include:
+
+    Binary code: Computers communicate and process information using a binary code, which is a system of ones and zeroes. Each binary digit (or bit) represents a simple “on” or “off” state, and combinations of bits can represent more complex information.
+    Algorithms: An algorithm is a set of instructions or steps that a computer program follows to solve a problem or complete a task. Algorithms are used to perform a wide range of tasks, from sorting data to searching for patterns.
+    Programming languages: Programming languages are used to write computer programs. There are many different programming languages, each with its own syntax and set of rules.
+    Hardware vs. software: Hardware refers to the physical components of a computer, such as the CPU, memory, and storage devices. Software, on the other hand, refers to the programs and instructions that tell the hardware what to do.
+    Networks: Computers can be connected together in networks, which allows them to communicate and share resources. Networks can be wired or wireless and can be used for tasks such as sharing files, accessing the internet, or playing multiplayer games.
+    User interfaces: User interfaces are the means by which humans interact with computers. They can be graphical, such as a desktop or mobile operating system, or text-based, such as a command line interface.
+
+Types of simple understanding of Computers
+
+    Personal computers (PCs): These are the most common type of computer and are designed for personal use. PCs include desktops, laptops, and tablets.
+    Servers: Servers are designed to manage and distribute resources and data to multiple users or devices. They are often used in businesses or organizations to store and share data and run applications.
+    Mainframes: Mainframe computers are large, powerful machines that are designed to handle massive amounts of data and perform complex operations. They are often used in large corporations or government agencies.
+    Supercomputers: Supercomputers are extremely powerful computers that are designed to process data at extremely high speeds. They are often used for scientific research and other specialized applications.
+    Embedded systems: Embedded systems are small computers that are built into other devices, such as appliances, cars, and medical devices. They are designed to perform specific functions and operate without human intervention.
+    Wearable computers: Wearable computers are small, portable devices that are worn on the body, such as smartwatches or fitness trackers. They are designed to track data and provide information on the go.
+
+what you really ned to know for basic usage:
+Features of a computer include
+
+    Processor: The processor is the brain of the computer, and it carries out all the instructions and calculations required by the system.
+    Memory: The memory or RAM (Random Access Memory) stores data temporarily for the processor to access quickly.
+    Storage: Storage devices like hard disks, solid-state drives, or external drives provide long-term storage for data and files.
+    Input devices: Input devices like keyboards, mice, scanners, and cameras enable the user to provide data and instructions to the computer.
+    Output devices: Output devices like monitors, printers, and speakers display the results of the computer’s processing.
+    Operating System: The operating system manages the computer’s resources, controls the hardware, and runs application programs.
+    Networking: Networking capabilities allow computers to communicate and share resources with other computers and devices.
+    Software: Software is the set of instructions that tell the computer what to do, and it can range from simple applications to complex programs.
+    Graphics and Sound: Graphics and sound capabilities enable the computer to display and manipulate images and play sounds and videos.
+    Connectivity: Connectivity features like USB, Wi-Fi, Bluetooth, and Ethernet enable the computer to connect to other devices and the internet.
+
+
+Advantages of computers
+
+    Increased efficiency and productivity: Computers can perform tasks much faster and more accurately than humans, allowing for increased efficiency and productivity in various industries.
+    Storage and organization of information: Computers can store large amounts of data and organize it in a way that is easily accessible and searchable.
+    Improved communication: Computers enable people to communicate easily and instantly with others, regardless of their location.
+    Access to information and resources: The internet provides access to a vast amount of information and resources that would otherwise be difficult or impossible to obtain.
+    Automation of repetitive tasks: Computers can automate repetitive and mundane tasks, freeing up time and resources for more important work.
+
+Disadvantages of computers
+
+    Dependence on technology: Over-reliance on computers can lead to problems if they break down or malfunction, leading to loss of productivity and data.
+    Security risks: Computers can be vulnerable to viruses, malware, and hacking, leading to data breaches and other security risks.
+    Social isolation: The overuse of computers can lead to social isolation and reduced face-to-face interaction, leading to social and emotional problems.
+    Environmental impact: The production and disposal of computers can have a negative impact on the environment due to the use of resources and the creation of electronic waste.
+    Job displacement: Automation and the use of computers can lead to job displacement in certain industries, requiring workers to adapt to new skill sets or find new employment.
+
+note:  computers can work without an internet connection. The Internet is a global network that connects computers and enables communication and access to online resources. However, computers can perform a wide range of tasks offline, such as running software applications, playing media, processing data, and performing calculations. The internet is not a mandatory requirement for the basic functioning of a computer, although it provides additional functionality and access to online services.
+

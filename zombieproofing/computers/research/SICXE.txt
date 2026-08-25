@@ -1,0 +1,107 @@
+SIC/XE Architecture
+
+SIC/XE stands for Simplified Instructional Computer Extra Equipment or Extra Expensive.
+
+This computer is an advance version of SIC. Both SIC and SIC/XE are closely related to each other that’s why they are Upward Compatible. 
+
+SIC/XE machine architecture:
+
+ 1. Memory: Memory consists of 8 bit-bytes and the memory size is 1 megabytes (220 bytes). Standard SIC memory size is very small. This change in the memory size leads to change in the instruction formats as well as addressing modes. 3 consecutive bytes form a word (24 bits) in SIC/XE architecture. All address are byte addresses and words are addressed by the location of their lowest numbered byte.
+
+
+2. Registers: It contain 9 registers (5 SIC registers + 4 additional registers). Four additional registers are:
+
+Mnemonics             			Use of Register
+           B                 		 Base register
+           S                  		General working register
+           T                  		General working register
+           F                  		Floating-point accumulator
+
+
+3. Data Formats:
+-    Integers are represented by Binary numbers.
+-    Characters are represented using ASCII codes.
+-    Floating points are represented using 48-bits.
+
+
+4. Instruction formats:
+-    In SIC/XE architecture there are 4 types of formats available
+-    The Bit(e) is used to distinguish between Formats 3 and Formats 4,
+
+   ` e=0 means Format 3 and e=1 means Format 4`
+
+Format 1(1 byte):			8
+							opcode
+
+Format 2(2 bytes):			8			4			4
+							opcode		reg1		reg2
+
+Format 3(3 bytes):			6		1	1	1	1	1	1			12	
+							opcode	n	i	x	b	p	e		displacement
+
+Format 4(4 bytes):			6		1	1	1	1	1	1		20
+							opcode	n	i	x	b	p	e		addess
+
+*n=Indirect mode, i=Immediate addressing, x=Index addressing, b=Base addressing, p= Program counter, e=Exponential addressing*
+
+
+5. Addressing Modes: To use Format 3 use of Base register and Program counter is there. 
+		
+			Mode             		  	Indication 	         Target Address (TA) 
+         		Base relative    	  	b=1, p=0	            	 TA=(B) + displacement 
+          		Program-counter	b=0, p=1  	         	 TA=(PC) + displacement 
+          		relative
+
+[Target address is the effective address of the instruction. ]
+
+
+6. Instruction Set:
+
+-    in SIC/XE all the instructions are same as that of SIC architecture but because of Floating point data format it provide Floating point Arithmetic functions too.
+-    To perform floating-point arithmetic operations, 
+
+	ADDF = Add floating points, 
+	SUBF = Subtract floating points, 
+	MULF = Multiply floating points, 
+	DIVF = Divide floating points
+
+- SVC (Supervisor call) is also provided in the SIC/XE architecture to handle Interrupts.
+
+
+7. Input and Output: SIC/XE architecture include I/O channels that allow to perform I/O operations while CPU is executing other tasks. It will allow overlapping of computing and I/O, which make this architecture more efficient. Instructions such as SIO, TIO, HIO are used to start, test, and halt the operation I/O channels. 
+
+
+Instruction Set used in SIC/XE
+
+SIC/XE (Simplified Instructional Computer Extra Equipment or Extra Expensive). SIC/XE is an advanced version of SIC. Both SIC and SIC/XE are closely related to each other that’s why they are Upward Compatible.
+
+Below mentioned are the instructions that are used in SIC/XE (Simplified Instructional Computer Extra Equipment or Extra Expensive) Architecture. You can view the instructions that are particularly used in SIC Architecture.
+
+Before Proceeding to the table, we will be clear that M stands for Memory R1 and R2 are registers (A, B, S, T).
+
+MNEMONIC	OPERAND	OPCODE	EXPLANATION
+ADDR		R1, R2		90			R2 = R2 + R1
+CLEAR		R1			04			R1 = 0
+COMPR		R1, R2		A0			compares R1 and R2
+DIVR		R1, R2		9C			R2 = R2 / R1
+LDB		M			68			B = M
+LDS		M			6C			S = M
+LDT		M			74			T = M
+MULR		R1, R2		98			R2 = R2 * R1
+RMO		R1, R2		AC			R2 = R1
+SHIFTL	R1, n		A4	left shifts R1 n times
+SHIFTR	R1, n		A8	right shifts R1 n times
+STB		M			78			M = B
+STS		M			7C			M = S
+STT		M			84			M = T
+SUBR		R1, R2		94			R2 = R2 – R1
+TIXR		R1			B8			X = X + 1; compares X and R1
+
+Opcodes are simply the operation codes that help in representing specific machine instructions in the SIC/XE assembly language.
+Immediate Addressing involves a constant value embedded in instruction itself instead of a address.
+SIC/XE supports 5 types of addressing modes:
+-        Simple (S)
+-        Immediate (I)
+-        Indirect (N)
+-        Indexed (X)
+-        Extended (B)

@@ -1,0 +1,132 @@
+How the first calculators computed functions
+Jurjen Bos
+
+9 min read Aug 15, 2024
+
+When I worked on my blog on decimal floating point, I had did some literature reasearch on the first calculators. I found many devices claimed to be “the first calculator”. There were mechanical devices that help with doing computations (from Napier sticks to slide rules and the Curta), and many different early devices that could be seen as “calculators” and “computers” depending on your point of view.
+
+I was especially impressed by the HP9100A, the first calculator with screen and keyboard that was a single device, about the size of a typewriter, that was equivalent to what we now would call a “programmable scientific calculator”. (According to the designer it was called a calculator instead of a computer to prevent patent claims from IBM.)
+
+This impressie device cost a small fortune: $4900 in 1968, which would be about ten times as much today. This machine was far ahead of its time:
+
+It used decimal floating point numbers.
+Its functions included trigonometric functions in degrees and radians, and even hyperbolic functions.
+It used a predecessor of the familiar “reverse Polish” HP entry method with three stack levels.
+The display was a cathode ray tube showing the three working registers, drawn on screen as 7 segment digits instead of dots.
+It could store programs on magnetic cards.
+There were no integrated circuits in the device, (except for an amplifier chip in the card reader). All the calculations were done using Diode Transistor Logic (DTL).
+RAM was implemented as ring core memory.
+The ROM (32K organized as 512*64 bits) was implemented as a specially manufactured 16 layer print where the patterns in the print encoded the bits, with help of a few thousand diodes.
+There was a control ROM (1.8Kb organized as 64*29 bits) of “rope memory” consisting of wires braided through ferrite cores:
+
+An array of 29 ferrite cores, with wires going through them in a pattern that encodes 1.8Kb of memory.
+Control ROM: 1.8Kb of information encoded in wires braided through ferrite cores
+Despite of these limitations, it still had all the scientific functions you expect from a good calculator: sin, cos, tan and inverses, in both degrees and radians; hyperbolic functions with inverses; polar coordinates, and percentages. Memory consisted of twenty registers; when programming, the same space would be used so that every fourteen programming steps reduced memory by one register. Later versions added additional registers so that you could write bigger programs.
+
+Sharp eyed readers will be surprised to find out that fourteen programming steps would fit in a register. This is because the digits were stored in six bits (of which four are normally used; the sign was stored in one of the digits’ extra bits). The registers had twelve digits mantissa and two exponent.
+
+The algorithms
+With my usual style of investigating everything up to the smallest detail, I wanted to understand how those complicated functions could be implemented with so little hardware: there are only a few adder circuits, no hardware multiplier and no space in ROM to encode polynomial approximations of the functions.
+
+The trick is an algorithm that is invented in 1956 for the first digital flight computers, as described in this overview article: CORDIC. (I never understood this acronym “COordinate Rotation DIgital Computer”, until I learnt it was designed for a flight computer in a time of analog devices.)
+
+The CORDIC algorithm only consists of additions, subtractions and shifting of numbers, and a (small) table. This algorithm, originally designed for binary numbers, was adapted for decimal calculations by Hewlett-Packard. What surprises me most is that the same algorithm is used for almost everything, including multiplication and division. Intrigued by how so much can be done with so little hardware, I just had to find out how (and why) it worked.
+
+
+
+Inside of an HP9100A calculator. Six of the circuit boards are visible, packed full of transistors, resistors and diodes.
+A view on the terrifying internal complexity of the HP9100A
+The basic idea
+We start with very basic math, that I guess you’ll remember from school:
+
+
+
+The unit circle with on it a point with argument t and coordinates (x,y).
+sin and cos in the unit circle.
+In this picture, you see sin and cos as the familiar x and y coordinates of a point on the unit circle. So if we somehow can find a point on the unit circle, we have sin and cos from its coordinates. And maybe you also remember that it is easy to rotate a point (x, y) around the midpoint of the circle, over a given angle α. To do this, you first compute c = cos(α) and s = sin(α), and then your rotated point becomes (x⋅c − y⋅s, x⋅s + y⋅c).
+
+That doesn’t really sound like an efficient way to calculate sin and cos yet, doesn’t it? The brilliance starts with a naive optimization of the multiplications by c and s with the following ideas:
+
+since cos(α) is almost 1 for small values of α, just take 1 instead;
+if we take just the right value of α, s could be a nice value, like 0.001. After all, in decimal, multiplication by 0.001 is nothing but a shift to the right.
+So let’s replace our rotation (x⋅c − y⋅s, x⋅s + y⋅c) and replace it by the simplified formula (x − y→n, y + x→n), where (x→n) stands for “shift x to the right by n digits”. Now the rotation is really easy to calculate, but inaccurate.
+
+Careful analysis of this strange calculation shows that our new point can be seen as the combination of two computations:
+
+Rotation of the point by arctan(10^-n). We can also rotate the other direction if we swap the + and − in the formula. These values can be stored in a table.
+Stretching of the point away from the midpoint by a (normally tiny) amount of 1 + √(1 + 10^-2n). The amount of stretch is the same if we rotate the other way.
+It is possible to construct any rotation by combining the simplified rotations somehow, but the stretching is a bit worrisome. So here comes the next brilliant idea: if we fix the number (but not direction) of rotations for every value of n, the total amount of stretching will be fixed, so we can precompute it.
+
+
+Convergence in CORDIC: the steps decrease in size in a fixed pattern. The direction of the jumps varies with the input.
+Convergence in Cordic
+The table of rotation angles (in degrees) would look something like this:
+
+n arctan(10^-n) stretch
+1   5.71059     1.00499
+2   0.57294     1.00005
+3   0.05730     1.00000
+4   0.00573     1.00000
+5   0.00057     1.00000
+6   0.00006     1.00000
+The “stretch” values need not be in the table; all we need is the product of the stretch values for the rotations we need to make the given value t. It is actually not hard to write the given angle t as the sum of positive and negative angles from the table. All you have to do is remember how much rotation you still need, and subtract if it is positive, and add if it is negative.
+
+Putting it all together
+This is the whole program for calculating cos(α) and sin(α):
+
+Set (x, y) to (0.994987, 0) and set t to α.
+For n = 1 (9 times), 2 (9 times), 3 (9 times), … 6 (9 times), repeat the following steps:
+If t is positive, subtract table[n] from t, and set (x, y) to (x − y→n, y + x→n)
+Otherwise, add table[n] to t, and set (x, y) to (x + y→n, y − x→n)
+At the end of this computation, t is very close to 0, and we rotated (x, y) by an angle of t, while stretching it by a total amount of 1.005038. This puts (x, y) exactly on the unit circle, so x = cos(α) and y = sin(α).
+
+Note that there is not a single multiplication or division here: just addition, subtraction and shifting digits! The loop is so simple that you don’t need a microprocessor here: just a few adders and counters are enough. The HP9100A did it with discrete transistors, but the same method is still used today on FPGA chips for high speed calculations.
+
+Circuit diagram showing three adders and two shifters.
+Modern binary FPGA based CORDIC design.
+Generalization
+So now we can calculate sin(α) and cos(α), let’s see what more we can do. The first thing that is obvious is that we can also do this in radians by replacing the table values and the stretch factor, but with the same algorithm.
+
+Calculating tan(α) is a bit harder; we get to that below. But arctan(α) can be done by a trivial modification of the same algorithm. All we need to do is start with (x, y) = (α, 1) and instead of checking if t is positive, check if y is negative. The loop will make the value of y close to zero, and the loop ends with t = arctan(α). Stretch doesn’t matter here.
+
+Showing the paths of the coordinates of CORDIC: a circle, a line and a hyperbola x²-y²=1
+Circular, linear and hyperbolic CORDIR in one picture from the Walther article.
+And replacing the minus sign in (x − y→n, y + x→n) by a plus sign gives (x + y→n, y + x→n). With that formula, you get the hyperbolic functions cosh(α) and sinh(α). In the picture you see that a hyperbolic curve is following instead of the unit circle: that’s why they’re called hyperbolic functions. All you need to implement them is a new table of values of arctan(10^-n), and a new stretch value. And just like above, you get and arctanh(α) with the modified loop. This probably explains why those relatively obscure functions are almost always on calculators. All of this is nice explained in a 1971 article by Walther.
+
+With the hyperbolic functions, we can build more useful functions:
+
+exp(a) = sinh(a) + cosh(a), with just one addition;
+ln(a) is calculated by starting the arctanh loop with (x, y) = (1 + a, 1 − a) and multiplying the result with −2 (which is adding the number to itself and change the sign): only three extra additions needed
+√x can be calculated by starting the arctanh loop with (x, y) = (1 + s, 1 − s) and returning the x value instead of the α. s is a precomputed constant (the square of half the stretch value, to be exact).
+Multiplication and division!
+Once you have modified your algorithm to do both use (x − y→n, y + x→n) and (x + y→n, y + x→n), with negative values for the inverse rotations, it is not hard to include a zero option to get (x + 0⋅y→n, y + x→n). This variant will allow you to do multiplication and division with the same hardware! The corresponding table of value is just the values 0.1, 0.01, 0.001, etc.
+
+Now we can divide, we can calculate tan(α) and tanh(α) as sin(α)/cos(α) and sinh(α)/cosh(α): so we can calculate tan and tanh with two CORDIC operations.
+
+Summary
+With a simple amount of hardware consisting of three adders, two shifters, and four tables, we can compute almost everything that a calculator needs:
+
+multiplication and division
+sin, cos, tan, arctan (degrees and radians)
+sinh, cosh, tanh, arctanh
+exp and ln
+√
+The following functions are a bit harder, but are still using at most two loops. I was surprised to see that these are even subjects to relatively recent research!
+
+√(x² + y²) and √(x² − y²)
+arcsin, arccos, arcsinh, arccosh
+The main reason these functions are harder is that the stretch factor influences the value that you want to compare.
+
+Implementing floating point
+In order to increase your reading pleasure, some details left out here: the calculations as I show them here are fixed point, and work for −1 to +1. For floating point, you need a lot more adding and shifting to handle all the different situations. There are lots of tedious details of course, but none of these are hard to do in hardware.
+
+Trying it yourself
+Of course I implemented the whole thing in Python. I used a fixed precision of six decimal digits to show how accurate the calculations are when using real hardware. You can see that for reasonable input values the results are accurate to about five digits. I found out that it is worth the effort to implement accurate rounding in the shifter, because the functions become much more accurate. Even adding the subtle “round to even” methodmethod to the code, the result became visibly more accurate.
+
+Old calculators in real life: Erix Collectables
+If you happen to be in the Netherlands, especially if you are near Eindhoven, and you are interested in old computers, you may be interested in the shop of my brother-in-law. He sells old calculators, games and computers in working order. You can see him and his shop here (the video starts with CDs; skip to 5:00 for the computers). I wish I could be there more often to help fixing the devices.
+
+Mathematics
+Math
+Calculator
+Cordic
