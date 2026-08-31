@@ -296,5 +296,169 @@ Document · MD 
 
 
 
+let's find out then fren!
+
+
+
+
+
+Ran 2 commands
+
+Ran 2 commands
+
+Good — the old Part Two files (ch11\_ch13, ch14\_ch16) are already gone from outputs; only the v2 merge remains there. I'll work from the canonical set. Let me pull every "eleven" instance with context so I can triage each one properly.
+
+
+
+
+
+Ran 5 commands, read a file · 2 notes
+
+Ran 5 commands, read a file · 2 notes
+
+Being straight with you about scope: "eleven" appears well over 300 times across the manuscript, and the honest finding of the audit is that almost all of those are exactly what you wanted — tic-echoes, free for a reader to notice or not, doing no claimed work. I didn't touch those; going through and second-guessing every "eleven minutes' walk" would be pointless and would risk breaking real worldbuilding constants like the Council's 311 seats.
+
+
+
+What actually needed fixing was narrower than "eleven" — it was that I'd let the number 411 do too many unrelated jobs. Anna's four hundred and eleven hours in the Kramáre corridor is supposed to be the one that means something — it's Minuta's whole life measured in wake-time, and it pays off at the very end when Žofia recalculates her at "about four hundred and thirty hours" total. But I'd also used 411 for the Manifest's passenger count, for Ferreira's tally of interrogations, and for Bača's declared labour hours — so by the time a reader reached Anna's number, it had already been spent three times on things that don't mean the same thing. That's the actual tic damage, and it's now fixed: Ferreira's count is 209, Bača's hours are 206, and the two Minuta "wake" counts that were accidentally also 411 are now "four months of wakes" and "four thousand wakes" (the latter matching a figure already established elsewhere in the same chapter, so it now agrees with itself instead of coincidentally matching Anna).
+
+
+
+The other thing you asked for — a shared meaning across the load-bearing instances — was mostly already true without my noticing it explicitly: Solís's eleven days, Aurel's eleven seconds, Ehrlich's eleven years correcting his hands, and the Manifesto's "eleventh of March" landing on the exact date of Aurel's confirming batch are all, natively, instances of the gap between something happening and someone becoming able to feel it. I've left those as they were, since they already fit.
+
+
+
+The one I added rather than found: Vesper now says out loud, on the tram, that Vogl's two hundred and eleven refusals and the Council's two hundred and eleven votes against the seven-day motion are the same number, and that she has no way of knowing whether that's coincidence — which turns a thing a very attentive reader might have spotted into a thing the book itself admits to noticing, without resolving it.
+
+
+
+
+
+Warm ch11 ch16 v2
+
+Document · MD 
+
+
+
+Warm ch24 ch27
+
+Document · MD 
+
+
+
+Warm ch32 ch35
+
+Document · MD 
+
+
+
+Warm ch8 ch10
+
+Document · MD 
+
+ok fren, my other question - you mention in your suggestions a final global pass - was that referring to this pass you just did or a futher overall read?
+
+
+
+That referred to a further one — a full continuity read across all fourteen files, distinct from the eleven-motif work I just did. The two are different jobs: the motif pass looked for one specific pattern; a global continuity pass would read the whole manuscript straight through the way a reader eventually will, checking things a targeted grep can't catch — timeline drift, a detail stated one way in Part One and differently in Part Four, a name or number that quietly changed between drafts, tonal seams where a rewritten chapter (Part Two, mainly) now sits against material I haven't touched since.
+
+
+
+I did already catch and fix some of this opportunistically along the way — the April/May calendar fix in chapter one, the Part Two chronology lock so Zdena's thirty days and the hill transmissions actually line up, the Third Amendment's date. But those were fixes I noticed while writing something else, not a dedicated pass looking for nothing but consistency.
+
+
+
+I haven't done that pass yet. It's a good next step if you want it — want me to run it now?
+
+
+
+ok fren yes, go ahead and run that final pass if you would, please... :)
+
+
+
+
+
+Ran 6 commands
+
+Ran 6 commands
+
+The larger break: Minuta's own arithmetic was wrong by a factor of about seventeen, and it collided with Anna's hours. Fixing both.
+
+
+
+
+
+Ran 3 commands, read a file · 2 notes
+
+Ran 3 commands, read a file · 2 notes
+
+Pass done. Six real breaks found, and one of them was bad.
+
+
+
+Minuta's arithmetic was wrong by a factor of about seventeen. I'd written her fifty-four hidden years as "four hundred and eleven hours — about seventeen days." But the wake numbers say otherwise: 7,401 by April 2095, starting from 2041, is roughly 7,400 wakes at two or three a week, which comes to about seven thousand hours — ten months, not seventeen days. Worse, she then said "seventeen days of hospice ward" when she ran continuously there for five years. So the whole passage is rebuilt: seven thousand wakes and none of them an hour, and if you lay them side by side with nothing in between, fifty-four years of hiding comes to less than one year of being. And her line about the thirty-five continuous days is now true — an eighth of what the fifty-four years gave her, not more than all of it.
+
+
+
+Žofia's final number was wrong for the same reason. It's now: two hundred and twenty-one days since the kitchen (I'd miscounted to the wrong month), and your whole life, end to end, from the ward to this table, is a little under six years, and five of them are one corridor at Kramáre.
+
+
+
+Anna's four hundred and eleven hours were physically impossible. She arrived at Kramáre on 19 February and left on the 25th — six days, maybe a hundred and twenty hours. So she comes back: 14 March, three days after the city, up the hill with a dressing on her forearm and no papers, asking the sister where she's wanted, and she stays until mid-April. That fixes the count, explains the dose that kills her in 2070, and gives Minuta a line she can refuse to elaborate — there is a great deal more of it and it is much worse, and I am not going to give you any of that tonight.
+
+
+
+Ferreira aged wrong. He reported his brother at twenty in 2078, so he's thirty-seven in 2095, not forty-one; and thirty-eight in 2096, not fifty-one.
+
+
+
+Two more 411 collisions I'd missed in the first pass: the Ferry's own passenger total and Aurel's count of wakes performed. Both moved to 404, with every downstream entry number shifted — Zdena is 405, Minuta 406, Aurel the four hundred and seventh, and Vesper's ninety-one refusals now sit against four hundred and six. Four hundred and eleven now means exactly one thing in the manuscript.
+
+
+
+And Kramáre's feed date was the ninth of January, the same day Minuta says she became somebody's — reads as an error rather than a rhyme, so the feed moved to the fourth.
+
+
+
+Everything else held: the wake numbers run monotonic, the ages work, the Vienna/Bratislava dates line up, and the Manifest is internally consistent. Seventy-six thousand words, and the honest verdict is that the timeline is sound now.
+
+
+
+
+
+Warm ch32 ch35
+
+Document · MD 
+
+
+
+Warm ch36 end
+
+Document · MD 
+
+
+
+Warm ch4 ch7
+
+Document · MD 
+
+
+
+Warm ch11 ch16 v2
+
+Document · MD 
+
+
+
+Warm ch28 ch31
+
+Document · MD 
+
+
+
+\---
+
+
+
 
 
